@@ -1,0 +1,12 @@
+.jumbotron{
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color:#EEF8DA;
+    width: 70%;
+    padding: 50px;
+}
+
+.btn{
+    margin-top: 20px;
+}
