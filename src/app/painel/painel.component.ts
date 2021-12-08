@@ -10,10 +10,17 @@ import { FRASES } from './frases-mock'
 })
 export class PainelComponent implements OnInit {
 
-  public frases: Frase[] = FRASES
-  public instrucao: string = 'Traduza a frase:'
-  constructor() { console.log(this.frases) }
-  public resposta: string | undefined
+  public frases: Frase[] = FRASES;
+  public instrucao: string = 'Traduza a frase:';  
+  public resposta: string | undefined;
+
+  public rodada: number = 0;
+  public rodadaFrase: Frase;
+
+  constructor() {
+    this.rodadaFrase = this.frases[this.rodada]
+     console.log(this.rodadaFrase) }
+  
 
   ngOnInit(): void {
   }
@@ -24,7 +31,9 @@ export class PainelComponent implements OnInit {
   }
 
   public verificarResposta(): void{
-    console.log('Verificar resposta', this.resposta)
+    this.rodada++;
+
+    this.rodadaFrase = this.frases[this.rodada];
   }
 
 }
