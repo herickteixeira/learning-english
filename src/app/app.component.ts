@@ -1,3 +1,4 @@
+import { unescapeIdentifier } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,10 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   public jogoEmAndamento: boolean = true;
-  public tipoEncerramento: string = ''
+  public tipoEncerramento: string = '';
 
   public encerrarJogo(tipo: string): void {
     this.jogoEmAndamento = false;
     this.tipoEncerramento = tipo;
+  }
+
+  public reiniciarJogo(): void {
+    this.jogoEmAndamento = true;
+    this.tipoEncerramento = '';
   }
 }
