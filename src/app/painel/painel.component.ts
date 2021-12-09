@@ -12,15 +12,18 @@ export class PainelComponent implements OnInit {
 
   public frases: Frase[] = FRASES;
   public instrucao: string = 'Traduza a frase:';  
-  public resposta: string | undefined;
+  public resposta: string = '';
 
   public rodada: number = 0;
-  public rodadaFrase: Frase;
+  public rodadaFrase: Frase = this.frases[this.rodada];
 
   public progresso: number = 0;
 
+  public tentativas: number = 3;
+
   constructor() {
-    this.rodadaFrase = this.frases[this.rodada]
+    this.atualizaRodada()
+    
   }
   
 
@@ -37,16 +40,34 @@ export class PainelComponent implements OnInit {
     if(this.rodadaFrase.frasePtBr == this.resposta){
       alert('A tradução está correta')
 
-      this.rodada++;
+      //Troca a pergunta da rodada
+      this.rodada++;   
+      
+      this.atualizaRodada();
 
-      this.rodadaFrase = this.frases[this.rodada];
-
-      this.progresso = this.progresso + (100 / this.frases.length);
+      //Atualiza o progresso da rodada
+      this.progresso = this.progresso + (100 / this.frases.length);      
 
     }else{
-      alert('A tradução está errada')
+
+      this.tentativas--
+      this.atualizaRodada();
+
+      if(this.tentativas === -1){
+        alert('Acabou seus corações');
+        
+      }
     }    
     
+  }
+
+  public atualizaRodada(): void {
+    
+    //Atualiza a frase da rodada
+    this.rodadaFrase = this.frases[this.rodada]
+
+    //Limpa o campo do textarea
+    this.resposta = ''
   }
 
 }
