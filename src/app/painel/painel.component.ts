@@ -19,7 +19,7 @@ export class PainelComponent implements OnInit {
 
   constructor() {
     this.rodadaFrase = this.frases[this.rodada]
-     console.log(this.rodadaFrase) }
+  }
   
 
   ngOnInit(): void {
@@ -27,13 +27,22 @@ export class PainelComponent implements OnInit {
 
   public atualizaReposta(resposta: Event): void {
     this.resposta = ((<HTMLInputElement>resposta.target).value);
-    //console.log(this.resposta)
+    
   }
 
   public verificarResposta(): void{
-    this.rodada++;
 
-    this.rodadaFrase = this.frases[this.rodada];
+    if(this.rodadaFrase.frasePtBr == this.resposta){
+      alert('A tradução está correta')
+
+      this.rodada++;
+
+      this.rodadaFrase = this.frases[this.rodada];
+
+    }else{
+      alert('A tradução está errada')
+    }    
+    
   }
 
 }
