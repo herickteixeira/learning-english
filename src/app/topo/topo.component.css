@@ -1,3 +1,6 @@
 .navbar {
     background-color: #EEF8DA;
+    border-bottom: 2px dashed;
+    border-color: #99CE28;
+    height: 100px;
 }
